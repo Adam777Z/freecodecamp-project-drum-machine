@@ -24,6 +24,15 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
 		if (keys.includes(key)) {
 			document.querySelector('#drum-pad-'+key).dispatchEvent(new Event('click'));
+			document.querySelector('#drum-pad-'+key).classList.add('active');
+		}
+	});
+
+	document.querySelector('body').addEventListener('keyup', (event2) => {
+		let key = event2.key;
+
+		if (keys.includes(key)) {
+			document.querySelector('#drum-pad-'+key).classList.remove('active');
 		}
 	});
 });
