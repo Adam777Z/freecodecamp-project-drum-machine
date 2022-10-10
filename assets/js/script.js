@@ -34,7 +34,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 		let key = event2.key;
 
 		if (keys.includes(key)) {
-			document.querySelector('#drum-pad-'+key).classList.remove('active');
+			let button = document.querySelector('#drum-pad-'+key);
+
+			button.classList.remove('active');
 		}
 	});
 });
