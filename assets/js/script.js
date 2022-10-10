@@ -14,16 +14,18 @@ const keys = {
 }
 
 document.addEventListener('DOMContentLoaded', (event) => {
+	const display = document.querySelector('#display');
+
 	document.querySelectorAll('.drum-pad').forEach((e) => {
 		e.addEventListener('click', (event2) => {
 			event2.target.querySelector('audio').play();
-			document.querySelector('#display').textContent = event2.target.dataset['name'];
+			display.textContent = event2.target.dataset['name'];
 		});
 	});
 
 	document.querySelectorAll('audio').forEach((e) => {
 		e.addEventListener('ended', (event2) => {
-			document.querySelector('#display').textContent = '';
+			display.textContent = '';
 		});
 	});
 
