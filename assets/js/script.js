@@ -1,20 +1,10 @@
 const projectName = 'drum-machine';
 localStorage.setItem('example_project', 'Drum Machine');
 
-const keys = {
-	81: 'Q',
-	87: 'W',
-	69: 'E',
-	65: 'A',
-	83: 'S',
-	68: 'D',
-	90: 'Z',
-	88: 'X',
-	67: 'C'
-}
+var keys = [ 'Q', 'W', 'E', 'A', 'S', 'D', 'Z', 'X', 'C' ];
 
 document.addEventListener('DOMContentLoaded', (event) => {
-	const display = document.querySelector('#display');
+	let display = document.querySelector('#display');
 
 	document.querySelectorAll('.drum-pad').forEach((e) => {
 		e.addEventListener('click', (event2) => {
@@ -30,9 +20,9 @@ document.addEventListener('DOMContentLoaded', (event) => {
 	});
 
 	document.querySelector('body').addEventListener('keydown', (event2) => {
-		const key = keys[event2.which];
+		let key = event2.key.toUpperCase();
 
-		if (key !== undefined) {
+		if (keys.includes(key)) {
 			document.querySelector('#drum-pad-'+key).dispatchEvent(new Event('click'));
 		}
 	});
