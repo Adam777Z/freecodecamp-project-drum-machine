@@ -1,5 +1,9 @@
-.jumbotron {
-	margin-top: 2rem;
+body > .container > .row > .col {
+	max-width: 380px;
+}
+
+.bg-light-2 {
+	background-color: var(--bs-gray-200) !important;
 }
 
 .drum-pads button {
