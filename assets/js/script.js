@@ -13,17 +13,25 @@ const keys = {
 	67: 'C'
 }
 
-$(document).ready(function() {
-	$('.drum-pad').click(function() {
-		$(this).find('audio')[0].play();
-		$('#display').html($(this).data('name'));
+document.addEventListener('DOMContentLoaded', (event) => {
+	document.querySelectorAll('.drum-pad').forEach((e) => {
+		e.addEventListener('click', (event2) => {
+			event2.target.querySelector('audio').play();
+			document.querySelector('#display').textContent = event2.target.dataset['name'];
+		});
 	});
 
-	$('audio').bind('ended', function() {
-		$('#display').html('');
+	document.querySelectorAll('audio').forEach((e) => {
+		e.addEventListener('ended', (event2) => {
+			document.querySelector('#display').textContent = '';
+		});
 	});
 
-	$('body').keydown(function(event) {
-		$('#'+keys[event.which]).trigger('click');
+	document.querySelector('body').addEventListener('keydown', (event2) => {
+		const key = keys[event2.which];
+
+		if (key !== undefined) {
+			document.querySelector('#drum-pad-'+key).dispatchEvent(new Event('click'));
+		}
 	});
 });
