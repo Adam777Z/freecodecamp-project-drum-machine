@@ -23,8 +23,10 @@ document.addEventListener('DOMContentLoaded', (event) => {
 		let key = event2.key;
 
 		if (keys.includes(key)) {
-			document.querySelector('#drum-pad-'+key).dispatchEvent(new Event('click'));
-			document.querySelector('#drum-pad-'+key).classList.add('active');
+			let button = document.querySelector('#drum-pad-'+key);
+
+			button.dispatchEvent(new Event('click'));
+			button.classList.add('active');
 		}
 	});
 
